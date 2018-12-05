@@ -1,6 +1,6 @@
 {
   "name": "event-trigger",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple event emitter/trigger-er class",
   "main": "lib/index.js",
   "module": "lib/index.js",

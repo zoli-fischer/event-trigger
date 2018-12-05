@@ -15,7 +15,7 @@ const config = {
         path: path.resolve(__dirname, 'lib'),
         filename: '[name].js',
         library: libraryName,
-        libraryTarget: 'commonjs',
+        libraryTarget: 'commonjs2',
     },
     module: {
         rules: [
