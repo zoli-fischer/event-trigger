@@ -1,0 +1,52 @@
+{
+  "name": "event-trigger",
+  "version": "1.0.0",
+  "description": "Simple event emitter/trigger-er class",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --require babel-core/register --colors -w ./test/test.js",
+    "dev": "WEBPACK_ENV=development webpack --progress --colors --watch",
+    "build": "WEBPACK_ENV=production webpack --progress --colors",
+    "publish-public": "npm publish --access public",
+    "publish-dry": "npm publish --access public --dry-run",
+    "predeploy": "cd example && npm install && npm run build",
+    "deploy": "gh-pages -d example/build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zoli-fischer/event-trigger.git"
+  },
+  "keywords": [
+    "event",
+    "emitter",
+    "on",
+    "off",
+    "trigger",
+    "class"
+  ],
+  "author": "Zoltan Fischer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zoli-fischer/event-trigger/issues"
+  },
+  "homepage": "https://github.com/zoli-fischer/event-trigger#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^7.0.4",
+    "babel-preset-env": "^1.7.0",
+    "clean-webpack-plugin": "^1.0.0",
+    "eslint": "^5.9.0",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-import": "^2.14.0",
+    "expect": "^23.6.0",
+    "gh-pages": "^2.0.1",
+    "mocha": "^5.2.0",
+    "webpack": "^4.27.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
+  },
+  "files": [
+    "lib"
+  ]
+}
