@@ -73,17 +73,19 @@ export default class EventTrigger {
 
     static CustomEvent(type, params = {}) {
         params = Object.assign({ bubbles: false, cancelable: false, detail: undefined }, params);
+        if (typeof window !== 'function') {
+            if (typeof window.CustomEvent === 'function') {
+                return new window.CustomEvent(type, params);
+            }
 
-        if (typeof window.CustomEvent === 'function') {
-            return new window.CustomEvent(type, params);
+            const CustomEvent = (type_, params_ = {}) => {
+                const event = document.createEvent('CustomEvent');
+                event.initCustomEvent(type, params_.bubbles, params_.cancelable, params_.detail);
+                return event;
+            };
+            CustomEvent.prototype = window.Event.prototype;
+            return CustomEvent(type, params);
         }
-
-        const CustomEvent = (type_, params_ = {}) => {
-            const event = document.createEvent('CustomEvent');
-            event.initCustomEvent(type, params_.bubbles, params_.cancelable, params_.detail);
-            return event;
-        };
-        CustomEvent.prototype = window.Event.prototype;
-        return CustomEvent(type, params);
+        return Object.assign({ type, originalEvent: null }, params);
     }
 }
