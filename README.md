@@ -12,7 +12,17 @@ npm install --save event-trigger
 ## Usage
 
 ```
-// TODO
+import EventTrigger from 'event-trigger';
+ 
+const events = EventTrigger();
+events.on('custom-event', (event, data) => {
+    console.log(data);
+    // '🍔'
+});
+ 
+events.trigger('custom-event', '🍔');
+
+events.off('custom-event');
 ```
 
 ## Demo
