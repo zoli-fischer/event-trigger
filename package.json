@@ -1,6 +1,6 @@
 {
   "name": "event-trigger",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Simple event emitter/trigger-er class",
   "main": "lib/index.js",
   "module": "lib/index.js",
@@ -41,6 +41,7 @@
     "babel-eslint": "^10.0.1",
     "babel-loader": "^7.0.4",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
     "clean-webpack-plugin": "^1.0.0",
     "eslint": "^5.9.0",
     "eslint-config-airbnb": "^17.1.0",

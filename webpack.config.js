@@ -15,8 +15,7 @@ const config = {
         path: path.resolve(__dirname, 'lib'),
         filename: '[name].js',
         library: libraryName,
-        libraryTarget: 'umd',
-        umdNamedDefine: true,
+        libraryTarget: 'commonjs2',
     },
     module: {
         rules: [
