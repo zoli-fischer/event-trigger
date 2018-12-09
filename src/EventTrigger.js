@@ -89,7 +89,7 @@ export default class EventTrigger {
 
     static CustomEvent(type, params = {}) {
         params = assign({ bubbles: false, cancelable: false, detail: undefined }, params);
-        if (typeof window !== 'function') {
+        if (typeof window !== 'undefined') {
             if (typeof window.CustomEvent === 'function') {
                 return new window.CustomEvent(type, params);
             }
