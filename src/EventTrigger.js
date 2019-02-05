@@ -16,20 +16,34 @@ export default class EventTrigger {
         this.____callbacks = [];
     }
 
-    on(event, fn) {
+    on(event, fn, one = false) {
         const events = event.split(' ');
         if (events.length > 1) {
             events.forEach(eventSplit => {
-                this.on(eventSplit, fn);
+                this.on(eventSplit, fn, one);
             });
         } else {
             if (typeof this.____callbacks[event] === 'undefined') {
                 this.____callbacks[event] = [];
             }
-            this.____callbacks[event].push(fn);
+            const onefn = function(...args) { // eslint-disable-line func-names
+                if (typeof fn === 'function') {
+                    fn.apply(this, args);
+                    const index = this.____callbacks[event].indexOf(onefn);
+                    if (index > -1) {
+                        this.____callbacks[event].splice(index, 1);
+                    }
+                }
+            } 
+            this.____callbacks[event].push(one ? onefn : fn);
         }
         return this;
     }
+
+    one(event, fn) {
+        this.on(event, fn, true);
+    }
+
 
     off(event, fn) {
         if (typeof event === 'undefined') {
